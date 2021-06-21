@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <link rel="stylesheet" type="text/css" href="CSS/Master.css?1" />
+  <head>
+    <title>Sistema Loja Everson</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  
+  </head>
+  <body>
+<!--Início Incluir-->
+<link rel="stylesheet" type="text/css" href="CSS/Master.css?1" />
+<script src="menu/teste2.js"></script>
+<center>
+  <table>
+    <tr>
+      <td>
+<form method="post" action="compraap.php"><br>
+<p>
+Codigo:
+<input type="text" name="com_codigo" ><br>
+<br>
+
+<br> Codigo pagamento: <select size="1" name="tpg_codigo">
+
+<?php
+// gera lista de cidades // fazer a conexão
+include "conexao.php";
+$res = mysql_query ("select * from tb_tipopagto");
+while ($registro = mysql_fetch_row ($res))
+{
+$cod=$registro[0];
+$nome=$registro[1];
+echo "<option value=\"$cod\">$cod - $nome<option>\n";
+}
+?>
+</select><br><br>
+
+Codigo fornecedor:<select size="1" name="for_codigo">
+
+<?php
+// gera lista de cidades // fazer a conexão
+include "conexao.php";
+$res = mysql_query ("select * from tb_fornecedor");
+while ($registro = mysql_fetch_row ($res))
+{
+$cod=$registro[0];
+$nome=$registro[1];
+echo "<option value=\"$cod\">$cod - $nome<option>\n";
+}
+?>
+</select><br><br>
+
+
+
+Codigo Nota:<select size="1" name="nf_codigo">
+
+<?php
+// gera lista de cidades // fazer a conexão
+include "conexao.php";
+$res = mysql_query ("select * from tb_notafiscal");
+while ($registro = mysql_fetch_row ($res))
+{
+$cod=$registro[0];
+echo "<option value=\"$cod\">$cod<option>\n";
+}
+?>
+</select><br><br>
+
+
+Data compra:
+<input type="date" name="com_datacompra"><br>
+<br>
+Valor total:
+<input type="text" name="com_valortotal"><br>
+<br>
+Observações:
+<input type="text" name="com_observacoes"><br>
+<br>
+<input type="submit" name="Submit" value="Incluir">
+</form>
+      </td>
+    </tr>
+  </table>
+</center>
+<!--Fim Incluir-->
+</body>
+</html>
